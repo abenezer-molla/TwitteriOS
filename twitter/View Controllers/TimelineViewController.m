@@ -117,7 +117,7 @@
     
     NSString *URLString = tweetDetail.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    //NSData *urlData = [NSData dataWithContentsOfURL:url];
     
     //cell.profileImageLabel.image = tweetDetail.user.profilePicture;
 
