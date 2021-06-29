@@ -10,6 +10,10 @@
 
 #import "APIManager.h"
 
+#import "Tweet.h"
+
+
+
 @interface composeViewController ()
 
 @end

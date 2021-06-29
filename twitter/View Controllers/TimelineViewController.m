@@ -15,8 +15,10 @@
 
 #import "UIImageView+AFNetworking.h"
 
+#import "composeViewController.h"
 
-@interface TimelineViewController () < UITableViewDelegate, UITableViewDataSource>
+
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -131,16 +133,16 @@
     
     cell.createdAt.text = tweetDetail.createdAtString;
     
-    cell.screenName.text  = [NSString stringWithFormat:@"@%.2d", tweetDetail.user.screenName];
+    cell.screenName.text  = [NSString stringWithFormat:@"@%", tweetDetail.user.screenName];
     
     cell.nameLabel.text = tweetDetail.user.name;
 //
 //    cell.shareCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.];
     
     
-    cell.retweetCounter.text = [NSString stringWithFormat:@"%.2d", tweetDetail.retweetCount];
+    cell.retweetCounter.text = [NSString stringWithFormat:@"@%", tweetDetail.retweetCount];
     
-    cell.favoriteCounter.text = [NSString stringWithFormat:@"%.2d", tweetDetail.favoriteCount];
+    cell.favoriteCounter.text = [NSString stringWithFormat:@"@%", tweetDetail.favoriteCount];
     
     cell.shareTweetCounter.text = @"20"; // I will need to edit this one later.
     
@@ -199,15 +201,19 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+   UINavigationController *navigationController = [segue destinationViewController];
+   composeViewController *composeController = (composeViewController*)navigationController.topViewController;
+   composeController.delegate = self;
 }
-*/
+
+
 
 
 
