@@ -8,6 +8,8 @@
 
 #import "composeViewController.h"
 
+#import "APIManager.h"
+
 @interface composeViewController ()
 
 @end
@@ -15,6 +17,16 @@
 @implementation composeViewController
 
 - (IBAction)tweetAction:(id)sender {
+    [[APIManager shared]postStatusWithText:self.tweetText.text completion:^(Tweet *, NSError *) {
+        if (self) {
+            NSLog(@"Successfully posted a tweet!");
+        } else {
+            NSLog(@"Failed while posting a tweet!");
+        }
+    }];
+    [self dismissViewControllerAnimated:true completion:nil];
+    
+    
 }
 
 
@@ -30,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tweetText.delegate = self;
 }
 
 /*
