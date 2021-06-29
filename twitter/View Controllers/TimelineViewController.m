@@ -102,6 +102,26 @@
     
     cell.tweetDetailLabel.text = tweetDetail.text;
     
+    //cell.profileImageLabel.text =
+    
+    cell.createdAt.text = tweetDetail.createdAtString;
+    
+    cell.screenName.text  = tweetDetail.user.screenName;
+    
+    cell.nameLabel.text = tweetDetail.user.name;
+    
+    
+    cell.retweetCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.retweetCount];
+    
+    cell.favoriteCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.favoriteCount];
+    
+  
+    
+    NSString *URLString = tweetDetail.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+
+    
     /*
     cell.profileImageLabel.text =
     
