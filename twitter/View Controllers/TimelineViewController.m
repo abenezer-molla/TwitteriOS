@@ -11,15 +11,26 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 
+#import "Tweet.h"
 
-@interface TimelineViewController ()
+#import "TweetCell.h"
+
+
+@interface TimelineViewController () < UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation TimelineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.dataSource = self;
+    
+    self.tableView.delegate = self;
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
@@ -28,7 +39,9 @@
             //for (NSDictionary *dictionary in tweets) {
                 //NSString *text = dictionary[@"text"];
                 //NSLog(@"%@", text);
-                
+            [self.tableView reloadData];
+            
+        
             
            // }
             self.arrayOfTweets = (NSMutableArray*) tweets;
@@ -36,6 +49,10 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
+    
+    
+    
+    
     
     
 }
@@ -67,6 +84,68 @@
 }
 
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    
+    Tweet *tweetDetail = self.arrayOfTweets[indexPath.row];
+    
+    cell.nameLabel.text = tweetDetail.user.name;
+    
+    //cell.tweetCellView.text = tweetDetail.
+    
+    cell.tweetDetailLabel.text = tweetDetail.text;
+    
+    /*
+    cell.profileImageLabel.text =
+    
+    cell.profileImageLabel.text =
+    
+    cell.shareTweetLabel.text =
+    
+    cell.retweetLabel.text =
+    
+    cell.likeTweetLabel.text =
+    
+    cell.messagePeopleLabel.text =
+     
+     */
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    return cell;
+    
+}
+
+
+/*
+ 
+ 
+ @property (weak, nonatomic) IBOutlet UIView *tweetCellView;
+ @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+ @property (weak, nonatomic) IBOutlet UILabel *tweetDetailLabel;
+ @property (weak, nonatomic) IBOutlet UIImageView *profileImageLabel;
+ @property (weak, nonatomic) IBOutlet UIImageView *shareTweetLabel;
+ @property (weak, nonatomic) IBOutlet UIImageView *retweetLabel;
+ @property (weak, nonatomic) IBOutlet UIImageView *likeTweetLabel;
+ @property (weak, nonatomic) IBOutlet UIImageView *messagePeopleLabel;
+ 
+ 
+ */
+
+
 
 
 /*
@@ -78,6 +157,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 
 @end
