@@ -13,12 +13,16 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 
+#import "UIImageView+AFNetworking.h"
+
 
 @interface TimelineViewController () < UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl; 
 @end
 
 @implementation TimelineViewController
@@ -30,7 +34,29 @@
     
     self.tableView.delegate = self;
     
+    [self fetchTimeLine];
+    
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    [self.refreshControl addTarget:self action:@selector(fetchTimeLine) forControlEvents:UIControlEventValueChanged];
+    
+    [self.tableView addSubview:self.refreshControl];
+    
+    
     // Get timeline
+    
+
+    
+    
+    
+
+
+    
+}
+
+- (void)fetchTimeLine {
+    
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
@@ -46,14 +72,15 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        
+        [self.refreshControl endRefreshing];
     }];
     
     
-    
-    
-    
-    
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -104,22 +131,26 @@
     
     cell.createdAt.text = tweetDetail.createdAtString;
     
-    cell.screenName.text  = tweetDetail.user.screenName;
+    cell.screenName.text  = [NSString stringWithFormat:@"@%.2d", tweetDetail.user.screenName];
     
     cell.nameLabel.text = tweetDetail.user.name;
+//
+//    cell.shareCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.];
     
     
-    cell.retweetCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.retweetCount];
+    cell.retweetCounter.text = [NSString stringWithFormat:@"%.2d", tweetDetail.retweetCount];
     
-    cell.favoriteCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.favoriteCount];
+    cell.favoriteCounter.text = [NSString stringWithFormat:@"%.2d", tweetDetail.favoriteCount];
     
-  
+    cell.shareTweetCounter.text = @"20"; // I will need to edit this one later.
     
     NSString *URLString = tweetDetail.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     //NSData *urlData = [NSData dataWithContentsOfURL:url];
     
     //cell.profileImageLabel.image = tweetDetail.user.profilePicture;
+    
+    [cell.profileImageLabel setImageWithURL:url];
 
     
     /*
