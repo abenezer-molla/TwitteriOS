@@ -10,9 +10,7 @@
 #import "APIManager.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
-
 #import "Tweet.h"
-
 #import "TweetCell.h"
 
 
@@ -120,6 +118,8 @@
     NSString *URLString = tweetDetail.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
+    
+    //cell.profileImageLabel.image = tweetDetail.user.profilePicture;
 
     
     /*
