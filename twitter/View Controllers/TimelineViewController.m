@@ -133,16 +133,23 @@
     
     cell.createdAt.text = tweetDetail.createdAtString;
     
-    cell.screenName.text  = [NSString stringWithFormat:@"@%", tweetDetail.user.screenName];
+    //cell.screenName.text  = [NSString stringWithFormat:@"%", tweetDetail.user.screenName];
+    NSString *myString = tweetDetail.user.screenName;
+    
+    
+    
+    NSString *test = [NSString stringWithFormat:@"@%@", myString];
+    
+    cell.screenName.text  = test;
     
     cell.nameLabel.text = tweetDetail.user.name;
 //
 //    cell.shareCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.];
     
     
-    cell.retweetCounter.text = [NSString stringWithFormat:@"@%", tweetDetail.retweetCount];
+    cell.retweetCounter.text = [NSString stringWithFormat:@"%.1d", tweetDetail.retweetCount];
     
-    cell.favoriteCounter.text = [NSString stringWithFormat:@"@%", tweetDetail.favoriteCount];
+    cell.favoriteCounter.text = [NSString stringWithFormat:@"%.1d", tweetDetail.favoriteCount];
     
     cell.shareTweetCounter.text = @"20"; // I will need to edit this one later.
     
@@ -210,7 +217,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
    UINavigationController *navigationController = [segue destinationViewController];
    composeViewController *composeController = (composeViewController*)navigationController.topViewController;
-   composeController.delegate = self;
+   composeController.delegate = self; 
 }
 
 

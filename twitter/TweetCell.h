@@ -16,8 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *tweetDetailLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *shareTweetLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *retweetLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *likeTweetLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *messagePeopleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shareCounter;
 @property (weak, nonatomic) IBOutlet UILabel *retweetCounter;
@@ -25,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *createdAt;
 @property (weak, nonatomic) IBOutlet UILabel *screenName;
 @property (weak, nonatomic) IBOutlet UILabel *shareTweetCounter;
+
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 
 @end
 

@@ -16,13 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)didTweet:(Tweet *)tweet;
 
-@property (nonatomic, weak) id <ComposeViewControllerDelegate> delegate;
-
 @end
 
 @interface composeViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *tweetText;
-
+@property (nonatomic, weak) id <ComposeViewControllerDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

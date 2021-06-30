@@ -8,7 +8,11 @@
 
 #import "TweetCell.h"
 
+#import "Tweet.h"
+
 @implementation TweetCell
+
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -21,6 +25,21 @@
     // Configure the view for the selected state
 }
 
-
+- (IBAction)didTapFavorite:(id)sender {
     
+    NSLog(@"TAPPED");
+    
+    
+//
+//    self.Tweet = YES;
+//    self.tweetDetail.favoriteCount += 1;
+    
+}
+
+
+
+- (IBAction)retweetButtonAction:(id)sender {
+    
+}
+
 @end
