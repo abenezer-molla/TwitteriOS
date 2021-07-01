@@ -53,38 +53,40 @@
 
         
     }
+    
+
+
 
 
     
     self.nameLabel.text = self.tweet.user.name;
-    
-    //cell.tweetCellView.text = tweetDetail.
-    
+//    
+//    //cell.tweetCellView.text = tweetDetail.
+//    
     self.tweetDetailLabel.text = self.tweet.text;
-    
-    //cell.profileImageLabel.text =
-    
+//    
+//    //cell.profileImageLabel.text =
+//    
     self.createdAt.text = self.tweet.createdAtString;
-    
-    //cell.screenName.text  = [NSString stringWithFormat:@"%", tweetDetail.user.screenName];
+//    
+//    //cell.screenName.text  = [NSString stringWithFormat:@"%", tweetDetail.user.screenName];
     NSString *myString = self.tweet.user.screenName;
     
     
-    
-    NSString *test = [NSString stringWithFormat:@"@%@", myString];
-    
-    self.screenName.text  = test;
-    
-    self.nameLabel.text = self.tweet.user.name;
 //
-//    cell.shareCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.];
+    NSString *test = [NSString stringWithFormat:@"@%@", myString];
+//
+    self.screenName.text  = test;
+//
+    self.nameLabel.text = self.tweet.user.name;
+////
+//// cell.shareCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.];
+//
+
     
+    self.favoriteCounter.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     
-    self.retweetCounter.text = [NSString stringWithFormat:@"%.1d", self.tweet.retweetCount];
-    
-    self.favoriteCounter.text = [NSString stringWithFormat:@"%.1d", self.tweet.favoriteCount];
-    
-    self.shareTweetCounter.text = @""; // I will need to edit this one later.
+//    self.shareTweetCounter.text = @""; // I will need to edit this one later.
     
     NSString *URLString = self.tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
@@ -102,18 +104,111 @@
 
 
 
+-(void) refreshDataForRetweet{
+    
+    
+    if(self.tweet.retweeted){
+
+   
+        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon-green"] forState:UIControlStateNormal];
+        
+        
+    } else{
+        
+        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon"] forState:UIControlStateNormal];
+        
+   
+    }
+    
+    self.retweetCounter.text = [NSString stringWithFormat:@"%.2d", self.tweet.retweetCount];
+    
+
+    
+//    self.shareTweetCounter.text = @""; // I will need to edit this one later.
+    
+    NSString *URLString = self.tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    //NSData *urlData = [NSData dataWithContentsOfURL:url];
+    
+    //cell.profileImageLabel.image = tweetDetail.user.profilePicture;
+    
+    [self.profileImageLabel setImageWithURL:url];
+    
+}
+
+
+- (IBAction)didTapRetweet:(id)sender {
+    
+
+    if(self.tweet.retweeted){
+        NSLog(@"TWEETING WORKS");
+    
+
+
+    
+    //API Function
+        
+        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                 NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+                
+                
+            }
+            else{
+                NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+
+                [self refreshDataForRetweet];
+                self.tweet.retweeted = NO;
+                self.tweet.retweetCount -=1;
+                
+                
+               }
+            
+            
+        }];
+}
+else{
+    NSLog(@"RETWEETING WORKS");
+    //Favorite the tweet
+
+    [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+        if(error){
+             NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"Successfully retweeted the following Tweet: %@", tweet);
+            //[self.likeButton setImage:[UIImage imageNamed: @"favor-icon-red"] forState:UIControlStateNormal];
+            [self refreshDataForRetweet];
+            self.tweet.retweeted = YES;
+            self.tweet.retweetCount += 1;
+            
+            
+           }
+        
+        
+    }];
+    
+    
+
+
+}
+
+//    self.tweet.retweeted = YES;
+//
+//    self.tweet.retweetCount +=1;
+    
+    
+}
+
+
+
 - (IBAction)didTapFavorite:(id)sender {
     
-    
-
-    
-    
+ 
     if(self.tweet.favorited){
-        NSLog(@"UNDO");
-    
-
 
     
+  
     //API Function
         
         [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
@@ -136,7 +231,7 @@
         }];
 }
 else{
-    NSLog(@"LOVE");
+   
     //Favorite the tweet
 
     [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
@@ -156,41 +251,15 @@ else{
         
     }];
     
-    
-
-
-
-                }
-    
-    
-    
-
-
-
-
-
+             }
     
     
  
-    
-    
-    
 
-    
-    
-
-    
-    
-    
-    NSLog(@"TAPPED");
     
  
 }
 
 
-
-- (IBAction)retweetButtonAction:(id)sender {
-    
-}
 
 @end

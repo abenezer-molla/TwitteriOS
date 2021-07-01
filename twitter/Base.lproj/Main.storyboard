@@ -125,9 +125,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="57" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmU-IM-Wed">
-                                                    <rect key="frame" x="250" y="151" width="20" height="21"/>
+                                                    <rect key="frame" x="250" y="151" width="37" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="ptD-rK-b05"/>
+                                                        <constraint firstAttribute="width" constant="37" id="ptD-rK-b05"/>
                                                         <constraint firstAttribute="height" constant="21" id="uBb-OO-fFg"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -162,8 +162,9 @@
                                                     <rect key="frame" x="115" y="149" width="43" height="28"/>
                                                     <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                                     <state key="normal" title="Button" image="retweet-icon"/>
+                                                    <state key="selected" image="retweet-icon-green"/>
                                                     <connections>
-                                                        <action selector="retweetButtonAction:" destination="f9C-jJ-OaW" eventType="touchUpInside" id="MzB-LZ-KI4"/>
+                                                        <action selector="didTapRetweet:" destination="f9C-jJ-OaW" eventType="touchUpInside" id="NNa-LZ-Y04"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@aben_molla" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UuV-kG-fzx">
@@ -195,7 +196,7 @@
                                                 <constraint firstItem="bAB-Ek-Mf6" firstAttribute="leading" secondItem="Dbw-kY-sBd" secondAttribute="trailing" constant="3" id="bgK-qM-gV9"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="LFY-vx-OpW" secondAttribute="bottom" constant="10" id="biQ-ev-bQ5"/>
                                                 <constraint firstItem="e0f-CV-YkW" firstAttribute="leading" secondItem="Z4a-xE-LRX" secondAttribute="leadingMargin" constant="9" id="fgs-Xr-Kyi"/>
-                                                <constraint firstItem="joH-Xg-uL9" firstAttribute="leading" secondItem="bmU-IM-Wed" secondAttribute="trailing" constant="57" id="hSV-OM-Kvf"/>
+                                                <constraint firstItem="joH-Xg-uL9" firstAttribute="leading" secondItem="bmU-IM-Wed" secondAttribute="trailing" constant="40" id="hSV-OM-Kvf"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bmU-IM-Wed" secondAttribute="bottom" constant="12" id="iUI-po-mTN"/>
                                                 <constraint firstItem="RRR-tV-o6d" firstAttribute="top" secondItem="e0f-CV-YkW" secondAttribute="top" id="kGq-IU-RDZ"/>
                                                 <constraint firstItem="bmU-IM-Wed" firstAttribute="top" secondItem="e0f-CV-YkW" secondAttribute="top" id="mmr-9K-8mD"/>
@@ -360,6 +361,7 @@
         <image name="message-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="retweet-icon-green" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
