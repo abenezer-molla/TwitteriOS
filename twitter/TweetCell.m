@@ -120,7 +120,7 @@
    
     }
     
-    self.retweetCounter.text = [NSString stringWithFormat:@"%.2d", self.tweet.retweetCount];
+    self.retweetCounter.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     
 
 

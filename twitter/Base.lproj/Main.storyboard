@@ -87,7 +87,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-C8-Chf">
-                                                    <rect key="frame" x="15" y="11" width="56" height="56"/>
+                                                    <rect key="frame" x="15" y="23" width="56" height="56"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="56" id="P5q-Kr-Jby"/>
                                                         <constraint firstAttribute="width" constant="56" id="k01-JY-XpI"/>
@@ -216,7 +216,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="LFY-vx-OpW" secondAttribute="trailing" constant="15" id="rp4-HW-jLk"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Dbw-kY-sBd" secondAttribute="bottom" constant="7" id="umO-2Z-y8B"/>
                                                 <constraint firstItem="dJy-6A-roG" firstAttribute="leading" secondItem="GbD-C8-Chf" secondAttribute="trailing" constant="8" id="vpc-70-oGI"/>
-                                                <constraint firstItem="GbD-C8-Chf" firstAttribute="top" secondItem="Z4a-xE-LRX" secondAttribute="top" constant="11" id="wnP-xo-xbn"/>
+                                                <constraint firstItem="GbD-C8-Chf" firstAttribute="top" secondItem="Z4a-xE-LRX" secondAttribute="top" constant="23" id="wnP-xo-xbn"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="e0f-CV-YkW" secondAttribute="bottom" constant="8" id="yXS-r5-BPO"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="GbD-C8-Chf" secondAttribute="bottom" constant="10" placeholder="YES" id="yr6-We-jrQ"/>
                                             </constraints>
