@@ -14,21 +14,24 @@
 
 
 
-@interface composeViewController ()
+@interface composeViewController () <UITextViewDelegate>
 
 @end
 
 @implementation composeViewController
 
 - (IBAction)tweetAction:(id)sender {
-    [[APIManager shared]postStatusWithText:self.tweetText.text completion:^(Tweet *, NSError *) {
-        if (self) {
-            NSLog(@"Successfully posted a tweet!");
-        } else {
-            NSLog(@"Failed while posting a tweet!");
+    [[APIManager shared]postStatusWithText:self.tweetText.text completion:^(Tweet *tweet, NSError *error) {
+        if(error){
+            NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+        }
+        else{
+            [self.delegate didTweet:tweet];
+            NSLog(@"Compose Tweet Success!");
+            [self dismissViewControllerAnimated:true completion:nil];
         }
     }];
-    [self dismissViewControllerAnimated:true completion:nil];
+
     
     
 }
@@ -47,6 +50,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tweetText.delegate = self;
+
 }
 
 /*

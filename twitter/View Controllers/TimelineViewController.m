@@ -36,6 +36,8 @@
     
     self.tableView.delegate = self;
     
+    
+    
     [self fetchTimeLine];
     
     
@@ -119,9 +121,24 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
+    
+    
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     
     Tweet *tweetDetail = self.arrayOfTweets[indexPath.row];
+    
+    if(tweetDetail.favorited){
+        
+        [cell.likeButton setImage:[UIImage imageNamed: @"favor-icon-red"] forState:UIControlStateNormal];
+        
+        
+    } else{
+        
+        [cell.likeButton setImage:[UIImage imageNamed: @"favor-icon"] forState:UIControlStateNormal];
+        
+        
+        
+    }
     
     cell.nameLabel.text = tweetDetail.user.name;
     
@@ -151,7 +168,7 @@
     
     cell.favoriteCounter.text = [NSString stringWithFormat:@"%.1d", tweetDetail.favoriteCount];
     
-    cell.shareTweetCounter.text = @"20"; // I will need to edit this one later.
+    cell.shareTweetCounter.text = @""; // I will need to edit this one later.
     
     NSString *URLString = tweetDetail.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
@@ -161,29 +178,9 @@
     
     [cell.profileImageLabel setImageWithURL:url];
 
+
     
-    /*
-    cell.profileImageLabel.text =
-    
-    cell.profileImageLabel.text =
-    
-    cell.shareTweetLabel.text =
-    
-    cell.retweetLabel.text =
-    
-    cell.likeTweetLabel.text =
-    
-    cell.messagePeopleLabel.text =
-     
-     */
-    
-    
-    
-    
-    
-   
-    
-    
+    cell.tweet = tweetDetail;
     
     return cell;
     
@@ -217,7 +214,18 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
    UINavigationController *navigationController = [segue destinationViewController];
    composeViewController *composeController = (composeViewController*)navigationController.topViewController;
-   composeController.delegate = self; 
+   composeController.delegate = self;
+    
+    
+}
+
+- (void) didTweet:(Tweet *)tweet{
+    [self.arrayOfTweets insertObject:tweet atIndex:0];
+    
+    
+    [self.tableView reloadData];
+    
+    
 }
 
 
