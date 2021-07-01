@@ -32,7 +32,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 
     dateFormat.dateFormat = @"E MMM d HH:mm:ss Z y";
-
+  
     NSString *createdDate = self.tweetDict.originalDate;
     NSDate *date = [dateFormat dateFromString:createdDate];
     
