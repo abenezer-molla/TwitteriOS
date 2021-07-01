@@ -111,7 +111,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }];
 }
 
-- (void)retweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
+- (void)retweetText:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
 
     NSString *urlString = @"1.1/statuses/retweet/:id.json";
     NSLog(@"Please print the id%@", tweet.text);
@@ -128,7 +128,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 
 
 
-- (void)unretweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
+- (void)unretweetText:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
 
     NSString *urlString = @"1.1/statuses/unretweet/:id.json";
     NSLog(@"Please print the id%@", tweet.text);

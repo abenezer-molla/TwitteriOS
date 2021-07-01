@@ -110,12 +110,12 @@
     if(self.tweet.retweeted){
 
    
-        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon"] forState:UIControlStateNormal];
+        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon-green"] forState:UIControlStateNormal];
         
         
     } else{
         
-        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon-green"] forState:UIControlStateNormal];
+        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon"] forState:UIControlStateNormal];
         
    
     }
@@ -147,7 +147,7 @@
 //
     self.nameLabel.text = self.tweet.user.name;
 ////
-//// cell.shareCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.];
+
 //
 
     
@@ -159,7 +159,7 @@
     NSURL *url = [NSURL URLWithString:URLString];
     //NSData *urlData = [NSData dataWithContentsOfURL:url];
     
-    //cell.profileImageLabel.image = tweetDetail.user.profilePicture;
+
     
     [self.profileImageLabel setImageWithURL:url];
     
@@ -170,11 +170,11 @@
     
 
     if(self.tweet.retweeted){
-        NSLog(@"TWEETING WORKS");
+        NSLog(@"IF RETWEETED");
 
     //API Function
 //
-        [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+        [[APIManager shared] unretweetText:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
                  NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
 //
@@ -195,10 +195,10 @@
         }];
 }
 else{
-    NSLog(@"RETWEETING WORKS");
+    NSLog(@"IF NOT RETWEETED");
     //Favorite the tweet
 
-    [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+    [[APIManager shared] retweetText:self.tweet completion:^(Tweet *tweet, NSError *error) {
         if(error){
              NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
         }
