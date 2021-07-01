@@ -69,6 +69,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cKR-mp-hSI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemTealColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="195" id="f9C-jJ-OaW" customClass="TweetCell">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="195"/>
@@ -79,6 +80,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="reply-icon" translatesAutoresizingMaskIntoConstraints="NO" id="e0f-CV-YkW">
                                                     <rect key="frame" x="29" y="151" width="25" height="25"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="0u2-PD-Rwg"/>
                                                         <constraint firstAttribute="height" constant="25" id="wVW-ay-yGl"/>
@@ -147,18 +149,22 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRR-tV-o6d">
                                                     <rect key="frame" x="202" y="151" width="25" height="25"/>
+                                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="0GL-DL-MP8"/>
                                                         <constraint firstAttribute="width" constant="25" id="T3D-3w-flX"/>
                                                     </constraints>
                                                     <state key="normal" image="favor-icon"/>
-                                                    <state key="selected" image="favor-icon-red"/>
+                                                    <state key="selected" image="favor-icon-red">
+                                                        <color key="titleColor" systemColor="systemGray5Color"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="didTapFavorite:" destination="f9C-jJ-OaW" eventType="touchUpInside" id="Qtl-nM-hPV"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbw-kY-sBd">
                                                     <rect key="frame" x="100" y="148" width="30" height="30"/>
+                                                    <color key="backgroundColor" systemColor="systemTealColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="2sc-ct-v8C"/>
                                                         <constraint firstAttribute="height" constant="30" id="JgV-ok-u0O"/>
@@ -215,6 +221,7 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="GbD-C8-Chf" secondAttribute="bottom" constant="10" placeholder="YES" id="yr6-We-jrQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <connections>
                                             <outlet property="createdAt" destination="T1d-F6-kb7" id="bQX-Jt-EIw"/>
                                             <outlet property="favoriteCounter" destination="bmU-IM-Wed" id="3G4-nW-IIj"/>
@@ -255,7 +262,7 @@
                             <constraint firstItem="cKR-mp-hSI" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" id="z6F-Tn-veN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tweet" id="MOc-fV-EZE">
+                    <navigationItem key="navigationItem" title="Tweet" id="MOc-fV-EZE" colorLabel="IBBuiltInLabel-Blue">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="DEi-rV-uZJ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="S5q-SG-uA7">
                                 <rect key="frame" x="20" y="7" width="83" height="30"/>
@@ -447,6 +454,15 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
