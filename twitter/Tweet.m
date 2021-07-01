@@ -54,6 +54,7 @@
         formatter.timeStyle = NSDateFormatterNoStyle;
         // Convert Date to String
         self.createdAtString = [formatter stringFromDate:date];
+        self.originalDate =dictionary[@"created_at"];
     }
     return self;
 } 

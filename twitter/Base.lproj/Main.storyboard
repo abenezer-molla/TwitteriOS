@@ -403,6 +403,7 @@
                     <navigationItem key="navigationItem" id="ZgN-BD-Tae"/>
                     <connections>
                         <outlet property="likeButtonDetail" destination="Ml2-yl-qrt" id="eYf-8G-RHc"/>
+                        <outlet property="profileDateLabel" destination="Bnv-Zf-GUT" id="taO-X9-eAh"/>
                         <outlet property="profileNameLabel" destination="t8V-ki-hnS" id="sKo-3m-zJp"/>
                         <outlet property="profilePictureView" destination="Dh9-qD-EJL" id="VA9-1i-W3d"/>
                         <outlet property="profileTweetText" destination="RNl-fq-M1N" id="d6p-Fb-EnO"/>

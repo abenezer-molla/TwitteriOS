@@ -74,7 +74,17 @@
 //    
 //    //cell.profileImageLabel.text =
 //    
-    self.createdAt.text = self.tweet.createdAtString;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+
+    dateFormat.dateFormat = @"E MMM d HH:mm:ss Z y";
+
+    NSString *createdDate = self.tweet.originalDate;
+    NSDate *date = [dateFormat dateFromString:createdDate];
+    self.createdAt.text=  date.shortTimeAgoSinceNow;
+
+    
+    
     
     //self.createdAt.text = newDate;
 
@@ -144,7 +154,15 @@
 //
 //    //cell.profileImageLabel.text =
 //
-    self.createdAt.text = self.tweet.createdAtString;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+
+    dateFormat.dateFormat = @"E MMM d HH:mm:ss Z y";
+
+    NSString *createdDate = self.tweet.originalDate;
+    NSDate *date = [dateFormat dateFromString:createdDate];
+    self.createdAt.text=  date.shortTimeAgoSinceNow;
+
 //
 //    //cell.screenName.text  = [NSString stringWithFormat:@"%", tweetDetail.user.screenName];
     NSString *myString = self.tweet.user.screenName;

@@ -19,6 +19,8 @@
 
 #import "composeViewController.h"
 
+#import "DateTools.h"
+
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
@@ -162,11 +164,20 @@
     
     //cell.tweetCellView.text = tweetDetail.
     
-    cell.tweetDetailLabel.text = tweetDetail.text;
+    
     
     //cell.profileImageLabel.text =
     
-    cell.createdAt.text = tweetDetail.createdAtString;
+//    cell.createdAt.text = tweetDetail.createdAtString;
+//
+//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//
+//    dateFormat.dateFormat = @"E MMM d HH:mm:ss Z y";
+//
+//    NSDate *abenDate = [dateFormat dateFromString:tweetDetail.createdAtString];
+    
+   // cell.tweetDetailLabel.text = abenDate.shortTimeAgoSinceNow;
+    
     
     //cell.screenName.text  = [NSString stringWithFormat:@"%", tweetDetail.user.screenName];
     NSString *myString = tweetDetail.user.screenName;
@@ -198,7 +209,14 @@
     //cell.profileImageLabel.image = tweetDetail.user.profilePicture;
     
     [cell.profileImageLabel setImageWithURL:url];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 
+    dateFormat.dateFormat = @"E MMM d HH:mm:ss Z y";
+
+    NSString *createdDate = tweetDetail.originalDate;
+    NSDate *date = [dateFormat dateFromString:createdDate];
+    cell.createdAt.text=  date.shortTimeAgoSinceNow;
 
     
     cell.tweet = tweetDetail;
@@ -242,33 +260,13 @@
         composeController.delegate = self;
     } else if([segue.identifier isEqualToString:@"segueDetail"]){
         
-        
-        
-//
-//        NSLog(@"Tapping on a movie");
-//
-//        UITableViewCell *tappedCell = sender;
-//
-//
-//        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-//
-//        NSDictionary *movie  = self.movies[indexPath.row];
-//
-//        DetailsViewController *detailsViewController  = [segue destinationViewController];
-//
-//        detailsViewController.movie = movie;
-        
-        
-        
-  
-            NSLog(@"Tapping on a movie");
-            
-            TweetCell *tappedCell = sender;
+
+        TweetCell *tappedCell = sender;
             
             
             NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
             
-            NSDictionary *composedTweet  = self.arrayOfTweets[indexPath.row];
+            Tweet *composedTweet  = self.arrayOfTweets[indexPath.row];
             
             DetailsViewController *detailsViewController  = [segue destinationViewController];
             
