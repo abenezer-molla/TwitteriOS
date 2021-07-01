@@ -217,6 +217,10 @@
    composeController.delegate = self;
     
     
+    
+    
+    //GET BACK HERE TOMORROW FOR DETAIL PAGE
+    
 }
 
 - (void) didTweet:(Tweet *)tweet{

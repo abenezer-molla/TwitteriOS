@@ -128,6 +128,25 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 
 
 
+- (void)unretweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion{
+
+    NSString *urlString = @"1.1/statuses/unretweet/:id.json";
+    NSLog(@"Please print the id%@", tweet.text);
+    NSDictionary *parameters = @{@"id": tweet.idStr};
+    
+    NSLog(@"this is the dictionary, %@", parameters);
+    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+        Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
+        completion(tweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+
+
+
+
 
 
 @end

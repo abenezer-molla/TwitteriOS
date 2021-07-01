@@ -174,25 +174,25 @@
 
     //API Function
 //
-//        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
-//            if(error){
-//                 NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+        [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                 NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
 //
 //
-//            }
-//            else{
-//                NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+            }
+            else{
+                NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
 //
 //
-//                self.tweet.retweeted = NO;
-//                self.tweet.retweetCount -=1;
-//                [self refreshDataForRetweet];
+                self.tweet.retweeted = NO;
+                self.tweet.retweetCount -=1;
+                [self refreshDataForRetweet];
 //
 //
-//               }
+               }
 //
 //
-//        }];
+        }];
 }
 else{
     NSLog(@"RETWEETING WORKS");
