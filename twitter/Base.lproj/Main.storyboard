@@ -237,7 +237,7 @@
                                             <outlet property="shareTweetLabel" destination="e0f-CV-YkW" id="FSt-vp-COn"/>
                                             <outlet property="tweetCellView" destination="Z4a-xE-LRX" id="nMF-BT-1Th"/>
                                             <outlet property="tweetDetailLabel" destination="LFY-vx-OpW" id="exz-Yi-9Jt"/>
-                                            <segue destination="c7P-f7-w1p" kind="show" id="qbT-eN-yyO"/>
+                                            <segue destination="c7P-f7-w1p" kind="show" identifier="segueDetail" id="qbT-eN-yyO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -278,7 +278,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="edit-icon" id="Cqx-g8-OZg">
                             <connections>
-                                <segue destination="Ld4-UG-44e" kind="presentation" id="BwY-0T-wvG"/>
+                                <segue destination="Ld4-UG-44e" kind="presentation" identifier="segueTweet" id="BwY-0T-wvG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -401,6 +401,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZgN-BD-Tae"/>
+                    <connections>
+                        <outlet property="likeButtonDetail" destination="Ml2-yl-qrt" id="eYf-8G-RHc"/>
+                        <outlet property="profileNameLabel" destination="t8V-ki-hnS" id="sKo-3m-zJp"/>
+                        <outlet property="profilePictureView" destination="Dh9-qD-EJL" id="VA9-1i-W3d"/>
+                        <outlet property="profileTweetText" destination="RNl-fq-M1N" id="d6p-Fb-EnO"/>
+                        <outlet property="profileUsernameLabel" destination="Lue-Z6-qdX" id="gR2-KR-PiD"/>
+                        <outlet property="retweetButtonDetail" destination="oDz-x7-jAO" id="GhX-VZ-Ih7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ax5-zB-sLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

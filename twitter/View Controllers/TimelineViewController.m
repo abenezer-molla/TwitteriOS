@@ -13,6 +13,8 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 
+#import "DetailsViewController.h"
+
 #import "UIImageView+AFNetworking.h"
 
 #import "composeViewController.h"
@@ -20,6 +22,7 @@
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -140,6 +143,21 @@
         
     }
     
+    if(tweetDetail.retweeted){
+        
+        [cell.retweetButton setImage:[UIImage imageNamed: @"retweet-icon-green"] forState:UIControlStateNormal];
+        
+        
+    } else{
+        
+        [cell.retweetButton  setImage:[UIImage imageNamed: @"retweet-icon"] forState:UIControlStateNormal];
+        
+        
+        
+    }
+    
+    
+    
     cell.nameLabel.text = tweetDetail.user.name;
     
     //cell.tweetCellView.text = tweetDetail.
@@ -171,7 +189,10 @@
     cell.shareTweetCounter.text = @""; // I will need to edit this one later.
     
     NSString *URLString = tweetDetail.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
+    
+    NSString *stringWithoutSpaces = [URLString
+       stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+    NSURL *url = [NSURL URLWithString:stringWithoutSpaces];
     //NSData *urlData = [NSData dataWithContentsOfURL:url];
     
     //cell.profileImageLabel.image = tweetDetail.user.profilePicture;
@@ -212,16 +233,59 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   UINavigationController *navigationController = [segue destinationViewController];
-   composeViewController *composeController = (composeViewController*)navigationController.topViewController;
-   composeController.delegate = self;
+    
+    
+    if ([segue.identifier isEqualToString:@"segueTweet"]){
+        
+        UINavigationController *navigationController = [segue destinationViewController];
+        composeViewController *composeController = (composeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    } else if([segue.identifier isEqualToString:@"segueDetail"]){
+        
+        
+        
+//
+//        NSLog(@"Tapping on a movie");
+//
+//        UITableViewCell *tappedCell = sender;
+//
+//
+//        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+//
+//        NSDictionary *movie  = self.movies[indexPath.row];
+//
+//        DetailsViewController *detailsViewController  = [segue destinationViewController];
+//
+//        detailsViewController.movie = movie;
+        
+        
+        
+  
+            NSLog(@"Tapping on a movie");
+            
+            TweetCell *tappedCell = sender;
+            
+            
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+            
+            NSDictionary *composedTweet  = self.arrayOfTweets[indexPath.row];
+            
+            DetailsViewController *detailsViewController  = [segue destinationViewController];
+            
+        detailsViewController.tweetDict = composedTweet;
+            
+      
+    }
+}
+    
+ 
     
     
     
     
     //GET BACK HERE TOMORROW FOR DETAIL PAGE
     
-}
+
 
 - (void) didTweet:(Tweet *)tweet{
     [self.arrayOfTweets insertObject:tweet atIndex:0];

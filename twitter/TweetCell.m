@@ -12,7 +12,9 @@
 
 #import "APIManager.h"
 
-#import "UIImageView+AFNetworking.h" 
+#import "UIImageView+AFNetworking.h"
+
+#import "DateTools.h"
 
 @implementation TweetCell
 
@@ -54,11 +56,16 @@
         
     }
     
+    //Create calendar
+//    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+//    NSDateComponents *components = [[NSDateComponents alloc] init];
+//
+//    //Make changes
+//    [components setYear:1];
+//
+//    //Get new date with updated year
+//    NSDate *newDate = [calendar dateByAddingComponents:components toDate:date options:0];
 
-
-
-
-    
     self.nameLabel.text = self.tweet.user.name;
 //    
 //    //cell.tweetCellView.text = tweetDetail.
@@ -68,6 +75,9 @@
 //    //cell.profileImageLabel.text =
 //    
     self.createdAt.text = self.tweet.createdAtString;
+    
+    //self.createdAt.text = newDate;
+
 //    
 //    //cell.screenName.text  = [NSString stringWithFormat:@"%", tweetDetail.user.screenName];
     NSString *myString = self.tweet.user.screenName;

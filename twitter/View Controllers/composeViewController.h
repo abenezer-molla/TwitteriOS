@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface composeViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *tweetText;
 @property (nonatomic, weak) id <ComposeViewControllerDelegate> delegate;
+
+@property (nonatomic, strong) NSDictionary *abenTweets;
 @end
 
 NS_ASSUME_NONNULL_END
