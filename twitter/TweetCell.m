@@ -110,12 +110,12 @@
     if(self.tweet.retweeted){
 
    
-        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon-green"] forState:UIControlStateNormal];
+        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon"] forState:UIControlStateNormal];
         
         
     } else{
         
-        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon"] forState:UIControlStateNormal];
+        [self.retweetButton setImage:[UIImage imageNamed: @"retweet-icon-green"] forState:UIControlStateNormal];
         
    
     }
@@ -123,6 +123,35 @@
     self.retweetCounter.text = [NSString stringWithFormat:@"%.2d", self.tweet.retweetCount];
     
 
+
+    
+    
+    self.nameLabel.text = self.tweet.user.name;
+//
+//    //cell.tweetCellView.text = tweetDetail.
+//
+    self.tweetDetailLabel.text = self.tweet.text;
+//
+//    //cell.profileImageLabel.text =
+//
+    self.createdAt.text = self.tweet.createdAtString;
+//
+//    //cell.screenName.text  = [NSString stringWithFormat:@"%", tweetDetail.user.screenName];
+    NSString *myString = self.tweet.user.screenName;
+    
+    
+//
+    NSString *test = [NSString stringWithFormat:@"@%@", myString];
+//
+    self.screenName.text  = test;
+//
+    self.nameLabel.text = self.tweet.user.name;
+////
+//// cell.shareCounter.text = [NSString stringWithFormat:@"$%.2d", tweetDetail.];
+//
+
+    
+    self.retweetCounter.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     
 //    self.shareTweetCounter.text = @""; // I will need to edit this one later.
     
@@ -142,30 +171,28 @@
 
     if(self.tweet.retweeted){
         NSLog(@"TWEETING WORKS");
-    
 
-
-    
     //API Function
-        
-        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
-            if(error){
-                 NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
-                
-                
-            }
-            else{
-                NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
-
-                [self refreshDataForRetweet];
-                self.tweet.retweeted = NO;
-                self.tweet.retweetCount -=1;
-                
-                
-               }
-            
-            
-        }];
+//
+//        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+//            if(error){
+//                 NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+//
+//
+//            }
+//            else{
+//                NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+//
+//
+//                self.tweet.retweeted = NO;
+//                self.tweet.retweetCount -=1;
+//                [self refreshDataForRetweet];
+//
+//
+//               }
+//
+//
+//        }];
 }
 else{
     NSLog(@"RETWEETING WORKS");
@@ -178,9 +205,10 @@ else{
         else{
             NSLog(@"Successfully retweeted the following Tweet: %@", tweet);
             //[self.likeButton setImage:[UIImage imageNamed: @"favor-icon-red"] forState:UIControlStateNormal];
-            [self refreshDataForRetweet];
+            
             self.tweet.retweeted = YES;
             self.tweet.retweetCount += 1;
+            [self refreshDataForRetweet];
             
             
            }
@@ -220,9 +248,10 @@ else{
             else{
                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet);
 
-                [self refreshData];
+                
                 self.tweet.favorited = NO;
                 self.tweet.favoriteCount -=1;
+                [self refreshData];
                 
                 
                }
@@ -241,9 +270,10 @@ else{
         else{
             NSLog(@"Successfully favorited the following Tweet: %@", tweet);
             //[self.likeButton setImage:[UIImage imageNamed: @"favor-icon-red"] forState:UIControlStateNormal];
-            [self refreshData];
+            
             self.tweet.favorited = YES;
             self.tweet.favoriteCount += 1;
+            [self refreshData];
             
             
            }
