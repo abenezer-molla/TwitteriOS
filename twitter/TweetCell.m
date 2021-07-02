@@ -70,7 +70,7 @@
 //    
 //    //cell.tweetCellView.text = tweetDetail.
 //    
-    //self.tweetDetailLabel.text = self.tweet.text;
+    self.tweetDetailLabel.text = self.tweet.text;
 //    
 //    //cell.profileImageLabel.text =
 //    
@@ -141,6 +141,8 @@
     
     
     self.nameLabel.text = self.tweet.user.name;
+    self.tweetDetailLabel.text = self.tweet.text;
+
 //
 //    //cell.tweetCellView.text = tweetDetail.
 //

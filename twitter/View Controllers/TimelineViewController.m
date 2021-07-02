@@ -43,6 +43,7 @@
     
     
     
+    
     [self fetchTimeLine];
     
     
@@ -72,6 +73,8 @@
             //for (NSDictionary *dictionary in tweets) {
                 //NSString *text = dictionary[@"text"];
                 //NSLog(@"%@", text);
+
+
             [self.tableView reloadData];
             
         
@@ -161,6 +164,7 @@
     
     
     cell.nameLabel.text = tweetDetail.user.name;
+    cell.tweetDetailLabel.text = tweetDetail.text;
     
     //cell.tweetCellView.text = tweetDetail.
     
@@ -226,6 +230,17 @@
 }
 
 
+- (void) didTweet:(Tweet *)tweet{
+    [self.arrayOfTweets insertObject:tweet atIndex:0];
+    
+    NSLog(@"%@", self.arrayOfTweets);
+    
+    
+    [self.tableView reloadData];
+    
+}
+
+
 /*
  
  
@@ -240,6 +255,7 @@
  
  
  */
+
 
 
 
@@ -275,6 +291,8 @@
       
     }
 }
+
+
     
  
     
@@ -284,15 +302,9 @@
     //GET BACK HERE TOMORROW FOR DETAIL PAGE
     
 
+    
+    
 
-- (void) didTweet:(Tweet *)tweet{
-    [self.arrayOfTweets insertObject:tweet atIndex:0];
-    
-    
-    [self.tableView reloadData];
-    
-    
-}
 
 
 
