@@ -68,11 +68,30 @@ Here's a walkthrough of implemented user stories:
 
 
 
-https://user-images.githubusercontent.com/57775399/124211853-af90ed80-daa2-11eb-907c-ecae4bbdcf1b.mov
+
+https://user-images.githubusercontent.com/57775399/124213720-e9afbe80-daa5-11eb-8e56-d079c8583491.mov
 
 
 
-https://user-images.githubusercontent.com/57775399/124211860-b3247480-daa2-11eb-85ca-b3f24b87a1e5.mov
+https://user-images.githubusercontent.com/57775399/124213749-f59b8080-daa5-11eb-9b9f-75d9f9b37e5a.mov
+
+
+
+
+
+
+
+https://user-images.githubusercontent.com/57775399/124213764-fd5b2500-daa5-11eb-8cd8-85269a5123e4.mov
+
+
+
+
+
+
+
+https://user-images.githubusercontent.com/57775399/124213792-064bf680-daa6-11eb-822d-54af425c1ab8.mov
+
+
 
 
 
