@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) Tweet *tweetDict;
 
+@property (strong, nonatomic) Tweet *tweetDetail2;
+
 @end
 
 NS_ASSUME_NONNULL_END

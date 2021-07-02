@@ -12,6 +12,14 @@
 
 #import "DateTools.h"
 
+#import "APIManager.h"
+
+#import "TweetCell.h"
+
+#import "Tweet.h"
+
+#import "DateTools.h"
+
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
 @property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
@@ -20,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButtonDetail;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButtonDetail;
 @property (weak, nonatomic) IBOutlet UILabel *profileDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *likeDetailCounter;
+@property (weak, nonatomic) IBOutlet UILabel *retweetDetailCount;
 
 @end
 
@@ -52,9 +62,207 @@
     self.profileUsernameLabel.text = self.tweetDict.user.screenName;
     self.profileDateLabel.text = date.shortTimeAgoSinceNow;
     
+    self.retweetDetailCount.text = [NSString stringWithFormat:@"%d", self.tweetDict.retweetCount];
+    self.likeDetailCounter.text = [NSString stringWithFormat:@"%d", self.tweetDict.favoriteCount];
+    
+    NSLog(@"%@", self.tweetDetail2.idStr);
+    
+   
+    
 
 }
 
+
+
+
+//////
+
+
+
+
+
+-(void) refreshDataDetail{
+    
+    
+    if(self.tweetDetail2.favorited){
+
+   
+        [self.likeButtonDetail setImage:[UIImage imageNamed: @"favor-icon-red"] forState:UIControlStateNormal];
+        
+        
+    } else{
+        
+        [self.likeButtonDetail setImage:[UIImage imageNamed: @"favor-icon"] forState:UIControlStateNormal];
+        
+
+        
+
+
+        
+    }
+    
+
+
+    self.profileNameLabel.text = self.tweetDetail2.user.name;
+//
+//    //cell.tweetCellView.text = tweetDetail.
+//
+    self.profileTweetText.text = self.tweetDetail2.text;
+//
+
+
+    
+    self.retweetDetailCount.text = [NSString stringWithFormat:@"%d", self.tweetDetail2.retweetCount];
+    
+
+    NSString *myString = self.tweetDetail2.user.screenName;
+    
+    
+//
+    NSString *test = [NSString stringWithFormat:@"@%@", myString];
+//
+    self.profileUsernameLabel.text  = test;
+//
+    self.profileNameLabel.text = self.tweetDetail2.user.name;
+////
+   
+}
+
+
+
+
+-(void) refreshDataDetailRetweet{
+    
+    
+    if(self.tweetDetail2.retweeted){
+
+   
+        [self.retweetButtonDetail setImage:[UIImage imageNamed: @"retweet-icon-green"] forState:UIControlStateNormal];
+        
+        
+    } else{
+        
+        [self.likeButtonDetail setImage:[UIImage imageNamed: @"retweet-icon"] forState:UIControlStateNormal];
+        
+
+        
+
+
+        
+    }
+    
+
+
+    self.profileNameLabel.text = self.tweetDetail2.user.name;
+//
+//    //cell.tweetCellView.text = tweetDetail.
+//
+    self.profileTweetText.text = self.tweetDetail2.text;
+//
+
+
+    
+    
+    
+    //self.createdAt.text = newDate;
+
+//
+//    //cell.screenName.text  = [NSString stringWithFormat:@"%", tweetDetail.user.screenName];
+    NSString *myString = self.tweetDetail2.user.screenName;
+    
+    self.likeDetailCounter.text = [NSString stringWithFormat:@"%d", self.tweetDetail2.favoriteCount];
+//
+    NSString *test = [NSString stringWithFormat:@"@%@", myString];
+//
+    self.profileUsernameLabel.text  = test;
+//
+    self.profileNameLabel.text = self.tweetDetail2.user.name;
+////
+   
+}
+
+
+
+
+
+
+
+- (IBAction)likeActionDetail:(id)sender {
+    
+}
+
+- (IBAction)retweetActionDetail:(id)sender {
+    
+    
+    
+    if(self.tweetDetail2.retweeted){
+        NSLog(@"IF RETWEETED");
+
+    //API Function
+//
+        [[APIManager shared] unretweetText:self.tweetDetail2 completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                 NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+//
+//
+            }
+            else{
+                NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+//
+//
+                self.tweetDetail2.retweeted = NO;
+                self.tweetDetail2.retweetCount -=1;
+                [self refreshDataDetailRetweet];
+//
+//
+               }
+//
+//
+        }];
+}
+else{
+    NSLog(@"IF NOT RETWEETED");
+    //Favorite the tweet
+
+    [[APIManager shared] retweetText:self.tweetDetail2 completion:^(Tweet *tweet, NSError *error) {
+        if(error){
+             NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"Successfully retweeted the following Tweet: %@", tweet);
+            //[self.likeButton setImage:[UIImage imageNamed: @"favor-icon-red"] forState:UIControlStateNormal];
+            
+            self.tweetDict.retweeted = YES;
+            self.tweetDict.retweetCount += 1;
+            [self refreshDataDetailRetweet];
+            
+            
+           }
+        
+        
+    }];
+    
+    
+
+
+    
+    
+    
+    
+    
+}
+    
+}
+
+
+    
+
+    
+
+
+    
+    
+    
 
 
 /*
@@ -66,5 +274,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+    
+
 
 @end
+    

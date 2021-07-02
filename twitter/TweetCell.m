@@ -70,7 +70,7 @@
 //    
 //    //cell.tweetCellView.text = tweetDetail.
 //    
-    self.tweetDetailLabel.text = self.tweet.text;
+    //self.tweetDetailLabel.text = self.tweet.text;
 //    
 //    //cell.profileImageLabel.text =
 //    
@@ -108,13 +108,7 @@
     
 //    self.shareTweetCounter.text = @""; // I will need to edit this one later.
     
-    NSString *URLString = self.tweet.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
-    //NSData *urlData = [NSData dataWithContentsOfURL:url];
-    
-    //cell.profileImageLabel.image = tweetDetail.user.profilePicture;
-    
-    [self.profileImageLabel setImageWithURL:url];
+
     
     
 
@@ -150,7 +144,7 @@
 //
 //    //cell.tweetCellView.text = tweetDetail.
 //
-    self.tweetDetailLabel.text = self.tweet.text;
+    //self.tweetDetailLabel.text = self.tweet.text;
 //
 //    //cell.profileImageLabel.text =
 //
@@ -182,14 +176,7 @@
     self.retweetCounter.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     
 //    self.shareTweetCounter.text = @""; // I will need to edit this one later.
-    
-    NSString *URLString = self.tweet.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
-    //NSData *urlData = [NSData dataWithContentsOfURL:url];
-    
 
-    
-    [self.profileImageLabel setImageWithURL:url];
     
 }
 

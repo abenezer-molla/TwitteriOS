@@ -375,6 +375,9 @@
                                     <constraint firstAttribute="height" constant="30" id="pox-3i-SkI"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="favor-icon"/>
+                                <connections>
+                                    <action selector="likeActionDetail:" destination="c7P-f7-w1p" eventType="touchUpInside" id="YMX-hR-tDu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDz-x7-jAO">
                                 <rect key="frame" x="204" y="162.33333333333334" width="84" height="38"/>
@@ -383,11 +386,14 @@
                                     <constraint firstAttribute="width" constant="84" id="TgX-Eh-Z6P"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="retweet-icon"/>
+                                <connections>
+                                    <action selector="retweetActionDetail:" destination="c7P-f7-w1p" eventType="touchUpInside" id="QdQ-A1-c8d"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB8-tr-zYZ">
-                                <rect key="frame" x="274" y="166" width="21" height="30"/>
+                                <rect key="frame" x="274" y="166" width="39" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="21" id="d7K-Li-nfe"/>
+                                    <constraint firstAttribute="width" constant="39" id="d7K-Li-nfe"/>
                                     <constraint firstAttribute="height" constant="30" id="rjD-H7-ekX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -428,18 +434,20 @@
                             <constraint firstItem="t8V-ki-hnS" firstAttribute="leading" secondItem="Dh9-qD-EJL" secondAttribute="trailing" constant="10" id="vKC-ht-jgW"/>
                             <constraint firstItem="sLf-t4-QAv" firstAttribute="trailing" secondItem="Ml2-yl-qrt" secondAttribute="trailing" constant="19" id="vL2-bO-HxR"/>
                             <constraint firstItem="Dh9-qD-EJL" firstAttribute="top" secondItem="sLf-t4-QAv" secondAttribute="top" constant="30" id="zSb-la-I2Q"/>
-                            <constraint firstItem="Ml2-yl-qrt" firstAttribute="leading" secondItem="GB8-tr-zYZ" secondAttribute="trailing" constant="16" id="zv6-9o-qpJ"/>
+                            <constraint firstItem="Ml2-yl-qrt" firstAttribute="leading" secondItem="GB8-tr-zYZ" secondAttribute="trailing" constant="-2" id="zv6-9o-qpJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZgN-BD-Tae"/>
                     <connections>
                         <outlet property="likeButtonDetail" destination="Ml2-yl-qrt" id="eYf-8G-RHc"/>
+                        <outlet property="likeDetailCounter" destination="GB8-tr-zYZ" id="ecJ-h8-kh5"/>
                         <outlet property="profileDateLabel" destination="Bnv-Zf-GUT" id="taO-X9-eAh"/>
                         <outlet property="profileNameLabel" destination="t8V-ki-hnS" id="sKo-3m-zJp"/>
                         <outlet property="profilePictureView" destination="Dh9-qD-EJL" id="VA9-1i-W3d"/>
                         <outlet property="profileTweetText" destination="RNl-fq-M1N" id="d6p-Fb-EnO"/>
                         <outlet property="profileUsernameLabel" destination="Lue-Z6-qdX" id="gR2-KR-PiD"/>
                         <outlet property="retweetButtonDetail" destination="oDz-x7-jAO" id="GhX-VZ-Ih7"/>
+                        <outlet property="retweetDetailCount" destination="aIU-Uw-ycG" id="6IF-q2-GSC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ax5-zB-sLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
